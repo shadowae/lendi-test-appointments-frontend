@@ -11,12 +11,29 @@ const Wrapper = styled.div`
   margin-bottom: 48px;
 `;
 
-const Navigation = () => {
+type NavigationProps = {
+  currentAppt: { 
+    id: number; 
+    brokerName: string; 
+    date: string, 
+    client: string;
+    clientRep: string;
+    location: string;
+  };
+}
+
+const Navigation = (props: NavigationProps) => {
+
+  const {currentAppt} = props;
+
+  const renderSelection = () => (
+    <strong>
+        Currently selected appointment: { currentAppt.date } with { currentAppt.brokerName }
+    </strong>
+  )
   return (
     <Wrapper>
-      <strong>
-        Currently selected appointment: [appointment date] with [broker name]
-      </strong>
+      {props && props.currentAppt && renderSelection()}
       <strong>Welcome to Lendi</strong>
     </Wrapper>
   );

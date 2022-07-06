@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 import Navigation from "./Navigation";
@@ -27,12 +27,14 @@ const Heading = styled.strong.attrs({ role: "heading", level: 1 })`
 `;
 
 const Root = () => {
+  const [currentAppt, setCurrentAppt] = useState();
+  
   return (
     <Wrapper>
-      <Navigation />
+      <Navigation currentAppt={currentAppt} />
       <Content>
         <Heading>Amazing site</Heading>
-        <AppointmentSelect />
+        <AppointmentSelect currentAppt={currentAppt} setCurrentAppt={setCurrentAppt}/>
       </Content>
     </Wrapper>
   );
